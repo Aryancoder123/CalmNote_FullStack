@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 const userModel = require('./users');
 
+const cors = require('cors');
+
 const journalModel = require('./journals');
 // const postModel = require('./posts');
 // const mongoose = require('mongoose');
@@ -11,6 +13,15 @@ passport.use(new localStrategy(userModel.authenticate()));
 
 const upload = require("./multers");
 // const Journal = require('./journals');
+
+
+router.use(cors(
+  {
+    origin:["https://project-group-8.vercel.app/"],
+    methods: ["POST",'GET'],
+    credentials: true
+  }
+))
 
 
 /* GET home page. */
